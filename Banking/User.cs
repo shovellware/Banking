@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Banking
 {
@@ -21,7 +17,6 @@ namespace Banking
             Console.WriteLine("Hello " + _username);
             Console.WriteLine("---------------------");
         }
-
 
         public decimal Checking
         {
@@ -49,7 +44,7 @@ namespace Banking
         }
 
         //TODO: can't take out more money than you have! add these conditions
-        public void MakeWithdrawal(decimal withAmount)
+        public void MakeWithdraw(decimal withAmount)
         {
             switch(_account)
             {
@@ -63,7 +58,6 @@ namespace Banking
         }
 
         // I need to know which account the user is working with (checking or savings)
-        // this method is called in the User() constructor, at the top of this class...
         // Also testing my usage of enum and how necessary it would be in this case,
         // when AccountType is always associated with 1 and 2
         public void ChooseAccount()
@@ -94,7 +88,6 @@ namespace Banking
                 }
             } while (invalid);
         }
-
 
         public void GetStatus()
         {

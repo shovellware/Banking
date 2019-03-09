@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Banking
 {
@@ -46,7 +42,7 @@ namespace Banking
                         dom.MakeDeposit(transactionAmount);
                         break;
                     case 2:
-                        dom.MakeWithdrawal(transactionAmount);
+                        dom.MakeWithdraw(transactionAmount);
                         break;
                     case 3:
                         dom.GetStatus();
@@ -56,7 +52,7 @@ namespace Banking
                         break;
                 }
 
-                Console.Write("Would you like to make another transaction? y/n \n>");
+                Console.Write("Make another transaction? y/n \n>");
                 string startOver = Console.ReadLine();
 
                 if (startOver.ToLower().Equals("n"))
@@ -71,7 +67,7 @@ namespace Banking
         {
             Console.WriteLine("\nWhat would you like to do?");
             Console.WriteLine(" 1 - Deposit \n" +
-                              " 2 - Withdrawal \n" +
+                              " 2 - Withdraw \n" +
                               " 3 - Check Balance \n" +
                               " 4 - Quit");
         }
