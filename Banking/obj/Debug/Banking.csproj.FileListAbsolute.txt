@@ -1,0 +1,7 @@
+C:\Users\shovelware\source\repos\Banking\Banking\bin\Debug\Banking.exe.config
+C:\Users\shovelware\source\repos\Banking\Banking\bin\Debug\Banking.exe
+C:\Users\shovelware\source\repos\Banking\Banking\bin\Debug\Banking.pdb
+C:\Users\shovelware\source\repos\Banking\Banking\obj\Debug\Banking.csprojAssemblyReference.cache
+C:\Users\shovelware\source\repos\Banking\Banking\obj\Debug\Banking.csproj.CoreCompileInputs.cache
+C:\Users\shovelware\source\repos\Banking\Banking\obj\Debug\Banking.exe
+C:\Users\shovelware\source\repos\Banking\Banking\obj\Debug\Banking.pdb
