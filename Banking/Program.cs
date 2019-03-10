@@ -20,34 +20,22 @@ namespace Banking
             bool deciding = true;
             do
             {
-                Console.Clear();
-                dom.ChooseAccount();
-                MainMenu();
+                dom.ChooseAccount();            
 
-                
-                int mainMenuChoice = int.Parse(Console.ReadLine());
-
-                decimal transactionAmount = 0;
-                // the program only needs to know the amount being put in or taken out if 
-                // a deposit or withdrawal action is being taken
-                if (mainMenuChoice == 1 || mainMenuChoice == 2)
-                {
-                    Console.WriteLine("How much: ");
-                    transactionAmount = decimal.Parse(Console.ReadLine());
-                }
-
-                switch (mainMenuChoice)
+                // switch will execute MainMenu() and make a decision based on whatever that method returns
+                // case 1 and 2 will prompt for a transaction amount
+                switch (MainMenu())
                 {
                     case 1:
-                        dom.MakeDeposit(transactionAmount);
+                        dom.MakeDeposit(MakeTransaction());
                         break;
                     case 2:
-                        dom.MakeWithdraw(transactionAmount);
+                        dom.MakeWithdraw(MakeTransaction());
                         break;
                     case 3:
                         dom.GetStatus();
                         break;
-                    case 4:
+                    case 0:
                         deciding = false;
                         break;
                 }
@@ -59,22 +47,41 @@ namespace Banking
                     deciding = false;
 
 
+                Console.Clear();
             } while (deciding);
         }
 
 
-        public static void MainMenu()
+        public static int MainMenu()
         {
             Console.WriteLine("\nWhat would you like to do?");
             Console.WriteLine(" 1 - Deposit \n" +
                               " 2 - Withdraw \n" +
                               " 3 - Check Balance \n" +
-                              " 4 - Quit");
+                              " 0 - Quit");
+
+            // i must cast as int here, because getNumbersFromString() returns decimal
+            return (int)getNumbersFromString(Console.ReadLine());
         }
 
-        //TODO: keep track of all transactions
+        public static decimal MakeTransaction()
+        {
+            Console.Write("Type in the amount: $");
+            // getNumbersFromString() contains input validation using a TryParse
+            // so i do not need to type it again here
+            // i am still okay with returning a "0" if any weird input is given
+            return getNumbersFromString(Console.ReadLine());
+        }
 
-
-        //tryparse method needs to be added here
+        // i am using this wherever input is needed
+        private static decimal getNumbersFromString(string input)
+        {
+            decimal success = 0;
+            if (decimal.TryParse(input, out success))
+                return success;
+            else
+                return 0;
+            // 0 is used to return a "quit" condition as the default
+        }
     }
 }
