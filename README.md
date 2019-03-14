@@ -7,3 +7,4 @@ Finding a proper way to work with the desired account. How does the program know
 #### Features to add
 - unique PIN required before banking is allowed, depending on user
 - quick withdraw
+- funds transfer
