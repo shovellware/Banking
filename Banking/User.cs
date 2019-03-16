@@ -43,17 +43,30 @@ namespace Banking
             }
         }
 
-        //TODO: can't take out more money than you have! add these conditions
+        // TODO: can't take out more money than you have! add these conditions
         public void MakeWithdraw(decimal withAmount)
         {
+            
             switch(_account)
             {
+                // decide where to take money from based on AccountType
+                // make sure there is enough money in the account before making withdraw
                 case (int)AccountType.checking:
-                    _checking -= withAmount;
+                    {
+                        if (withAmount > _checking)
+                            Console.WriteLine("You don't have that much money!");
+                        else
+                        _checking -= withAmount;
                     break;
+                    }
                 case (int)AccountType.savings:
-                    _savings -= withAmount;
+                    {
+                        if (withAmount > _savings)
+                            Console.WriteLine("You don't have that much money!");
+                        else
+                        _savings -= withAmount;
                     break;
+                    }
             }
         }
 
