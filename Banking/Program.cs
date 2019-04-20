@@ -10,11 +10,7 @@ namespace Banking
             // choose a user to begin banking
 
             // stand-in object with pre-defined account balance
-            User dom = new User("shovelware")
-            {
-                Checking = 5000,
-                Savings = 2000
-            };
+            User dom = new User("shovelware");
 
             // this loop is designed to make 1 transaction at a time, like an ATM
             // at the end, you are given the option to make another transaction, or quit
@@ -37,7 +33,7 @@ namespace Banking
                         break;
                     case 4:
                         dom.MakeWithdraw(FastCash());
-                        Console.WriteLine("Depositing cash now . . . ");
+                       
                         break;
                     case 0:
                         deciding = false;
@@ -70,7 +66,7 @@ namespace Banking
         public static decimal MakeTransaction()
         {
             Console.Write("Type in the amount: $");
-            // getNumbersFromString() contains input validation using a TryParse
+            // getNumbersFromString() contains a TryParse
             // so i do not need to type it again here
             // i am still okay with returning a "0" if any weird input is given
             return getNumbersFromString(Console.ReadLine());
@@ -82,12 +78,21 @@ namespace Banking
             Console.Clear();
             // i use an array of "choices" here and will return the value at an index
             // this saves from making a long line of if-statements
-            int[] cashArray = { 20, 40, 60, 80, 100, 200 };
+            int[] cashArray = { 20, 40, 60, 80, 100, 200, 0 };
             Console.WriteLine(" 0 - $20\n 1 - $40\n 2 - $60\n" +
-                              " 3 - $80\n 4 - $100\n 5 - $200");
+                              " 3 - $80\n 4 - $100\n 5 - $200\n 6 - Cancel");
 
             int choice = (int)getNumbersFromString(Console.ReadLine());
-            return cashArray[choice];
+            if (choice >= 0 && choice < 7)
+            {
+                Console.WriteLine("Depositing cash now . . . ");
+                return cashArray[choice];
+            }
+            else
+            {
+                Console.WriteLine("Cancelling . . . ");
+                return cashArray[6];
+            }
         }
         
         private static decimal getNumbersFromString(string input)

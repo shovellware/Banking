@@ -7,8 +7,6 @@ namespace Banking
         enum AccountType { checking = 1, savings }
 
         private string _username;
-        private decimal _checking;
-        private decimal _savings;
         private int _account;
 
         public User(string username)
@@ -18,53 +16,43 @@ namespace Banking
             Console.WriteLine("---------------------");
         }
 
-        public decimal Checking
-        {
-            get { return _checking; }
-            set { _checking = value; }
-        }
-
-        public decimal Savings
-        {
-            get { return _savings; }
-            set { _savings = value; }
-        }
+        public decimal Checking { get; private set; }
+        public decimal Savings { get; private set; }
+        
 
         public void MakeDeposit(decimal depAmount)
         {
             switch (_account)
             {
                 case (int)AccountType.checking:
-                    _checking += depAmount;
+                    Checking += depAmount;
                     break;
                 case (int)AccountType.savings:
-                    _savings += depAmount;
+                    Savings += depAmount;
                     break;
             }
         }
 
-        // TODO: can't take out more money than you have! add these conditions
         public void MakeWithdraw(decimal withAmount)
         {
-            
             switch(_account)
             {
                 // decide where to take money from based on AccountType
                 // make sure there is enough money in the account before making withdraw
                 case (int)AccountType.checking:
                     {
-                        if (withAmount > _checking)
+                        if (withAmount > Checking)
                             Console.WriteLine("You don't have that much money!");
                         else
-                        _checking -= withAmount;
+                        Checking -= withAmount;
                     break;
                     }
                 case (int)AccountType.savings:
                     {
-                        if (withAmount > _savings)
+                        if (withAmount > Savings)
                             Console.WriteLine("You don't have that much money!");
                         else
-                        _savings -= withAmount;
+                            Savings -= withAmount;
                     break;
                     }
             }
@@ -104,7 +92,7 @@ namespace Banking
 
         public void GetStatus()
         {
-            Console.WriteLine("Checking Balance: {0:C2} \nSavings Balance: {1:C2}\n", _checking, _savings);
+            Console.WriteLine("Checking Balance: {0:C2} \nSavings Balance: {1:C2}\n", Checking, Savings);
         }
     }
 }
