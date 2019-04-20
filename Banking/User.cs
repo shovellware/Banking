@@ -2,7 +2,7 @@
 
 namespace Banking
 {
-    class User
+    class User : IAtm
     {
         enum AccountType { checking = 1, savings }
 
